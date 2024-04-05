@@ -8,7 +8,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "prepare": "husky install",
-    "dev": "npx kill-port 3000 3001 && turbo run dev",
+    "local:dev": "npx kill-port 3000 3001 && turbo run dev",
+    "dev": "turbo run dev",
     "build": "turbo run build"
   },
   "keywords": [],
