@@ -4,9 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack serve --mode development",
+    "build": "pnpm run clean && webpack --mode production",
+    "clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.5.2",
+    "webpack-config": "workspace:*",
+    "components": "workspace:*"
+  }
 }

@@ -1,0 +1,11 @@
+.Checker{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.Checker__label {
+    padding-right: 10px;
+}
+.Checker__input {
+    line-height: 0;
+}

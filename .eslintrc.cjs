@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   env: {
     browser: true,
+    node: true,
     es2021: true,
   },
   extends: [
@@ -27,5 +28,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint', 'react'],
-  rules: {},
+  rules: {
+    '@typescript-eslint/no-var-requires': 'warn',
+  },
 };

@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.Block {
+  margin: 30px;
+  border: 1px dashed #ccc;
+  padding: 20px;
+  border-radius: 20px;
+}
