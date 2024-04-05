@@ -47,6 +47,7 @@ module.exports = {
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
+    allowedHosts: 'all',
   }),
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],

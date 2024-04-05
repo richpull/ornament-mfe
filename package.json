@@ -8,8 +8,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "prepare": "husky install",
-    "local:dev": "npx kill-port 3000 3001 && turbo run dev",
-    "dev": "turbo run dev",
+    "dev": "kill-port 3000 3001 && turbo run dev",
     "build": "turbo run build"
   },
   "keywords": [],
@@ -22,11 +21,11 @@
     ]
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@ornament-ui/fonts": "1.0.0",
     "@ornament-ui/icons": "1.1.0",
-    "@ornament-ui/kit": "1.10.0"
+    "@ornament-ui/kit": "1.10.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.1",
@@ -47,6 +46,7 @@
     "eslint-plugin-react": "^7.34.1",
     "html-webpack-plugin": "^5.5.1",
     "husky": "^9.0.11",
+    "kill-port": "^2.0.1",
     "nano-staged": "^0.8.0",
     "path": "^0.12.7",
     "prettier": "^3.2.5",
