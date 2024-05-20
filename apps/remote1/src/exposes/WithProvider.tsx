@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { FC, useContext } from 'react';
 import { useBoolean } from '@ornament-ui/kit/useBoolean';
 import { themeOrnamentDefault, ThemeProvider } from '@ornament-ui/kit/ThemeProvider';
 import { SnackbarProvider } from '@ornament-ui/kit/Snackbar';
 import { Checker, Demo } from 'components';
+import { CheckerProps } from '../../../../packages/components/Checker/index';
 import { Stack } from '@ornament-ui/kit/Stack';
+import { Context } from 'host/context';
 
-export default function WithProvider() {
+export const WithProvider: FC<{ CheckerProps?: CheckerProps }> = () => {
   const [withTheme, { toggle }] = useBoolean(true);
   const [demo, { toggle: demoToggle }] = useBoolean(true);
+  const value = useContext(Context);
 
   const render = () => {
     if (demo) {
@@ -22,6 +25,7 @@ export default function WithProvider() {
   return (
     <div className="Block">
       <Stack gap="2xl">
+        <div>Host context value: {value}</div>
         <p>
           <b>REMOTE 1</b>
         </p>
@@ -42,4 +46,6 @@ export default function WithProvider() {
       )}
     </div>
   );
-}
+};
+
+export default WithProvider;

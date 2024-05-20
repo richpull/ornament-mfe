@@ -6,12 +6,17 @@ import '@ornament-ui/fonts';
 import { Demo, Checker } from 'components';
 import { SnackbarProvider } from '@ornament-ui/kit/Snackbar';
 import { Stack } from '@ornament-ui/kit/Stack';
+import { Context } from './exposes/context';
 
-const WithProvider = React.lazy(() => import('remote1/WithProvider'));
+import { loadRemote } from '@module-federation/enhanced/runtime';
+
+const WithProvider = React.lazy(() => loadRemote('remote1/WithProvider'));
 
 function App() {
   const [withTheme, { toggle }] = useBoolean(true);
   const [demo, { toggle: demoToggle }] = useBoolean(true);
+  const [remote, { toggle: remoteToggle }] = useBoolean(false);
+
   const render = () => (
     <>
       <Stack gap="2xl">
@@ -25,24 +30,30 @@ function App() {
           Components?
         </Checker>
       </Stack>
-
       {demo && <Demo />}
-      <Suspense fallback="loading...">
-        <WithProvider />
-      </Suspense>
+      <Checker value={remote} onChange={remoteToggle}>
+        load remote?
+      </Checker>
+      {remote && (
+        <Suspense fallback="loading...">
+          <WithProvider />
+        </Suspense>
+      )}
     </>
   );
 
   return (
-    <div className="Block">
-      {withTheme ? (
-        <ThemeProvider theme={themeOrnamentDefault}>
-          <SnackbarProvider>{render()}</SnackbarProvider>
-        </ThemeProvider>
-      ) : (
-        render()
-      )}
-    </div>
+    <Context.Provider value="I am host context value">
+      <div className="Block">
+        {withTheme ? (
+          <ThemeProvider theme={themeOrnamentDefault}>
+            <SnackbarProvider>{render()}</SnackbarProvider>
+          </ThemeProvider>
+        ) : (
+          render()
+        )}
+      </div>
+    </Context.Provider>
   );
 }
 

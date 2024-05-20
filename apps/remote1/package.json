@@ -13,7 +13,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^4.5.2",
     "webpack-config": "workspace:*",
     "components": "workspace:*"
   }

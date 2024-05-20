@@ -1,23 +1,33 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced');
 const { HotModuleReplacementPlugin } = require('webpack');
 const path = require('path');
 const { rules, shared, resolve, devServer } = require('webpack-config');
+// const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+// const { EnhancedTsconfigWebpackPlugin } = require('enhanced-tsconfig-paths-webpack-plugin');
 
 module.exports = {
   entry: './src/index.ts',
   mode: 'development',
   devServer: devServer(),
-  resolve,
+  resolve: {
+    ...resolve,
+  },
   module: {
     rules,
   },
   plugins: [
     new ModuleFederationPlugin({
-      remotes: {
-        remote1: 'remote1@http://localhost:3001/remoteEntry.js',
+      name: 'host',
+      exposes: {
+        './context': './src/exposes/context.ts',
       },
-      shared,
+      shared: {
+        ...shared,
+        './src/exposes/context.ts': {
+          singleton: true,
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
@@ -25,7 +35,9 @@ module.exports = {
     new HotModuleReplacementPlugin(),
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[chunkhash].bundle.js',
+    chunkFilename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
 };

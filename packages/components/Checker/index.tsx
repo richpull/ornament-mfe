@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import './style.css';
 
-interface CheckerProps {
+export interface CheckerProps {
   value: boolean;
   onChange: () => void;
   children: string;

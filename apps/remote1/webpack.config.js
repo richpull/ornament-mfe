@@ -1,27 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { ModuleFederationPlugin } = require('webpack').container;
+const { ModuleFederationPlugin } = require('@module-federation/enhanced/webpack');
 const { HotModuleReplacementPlugin } = require('webpack');
 const path = require('path');
-const deps = require('../../package.json').dependencies;
-const { rules, resolve, devServer } = require('webpack-config');
-
-const conf = {
-  name: 'remote1',
-  filename: 'remoteEntry.js',
-  exposes: {
-    './WithProvider': './src/exposes/WithProvider',
-  },
-  shared: {
-    react: {
-      singleton: true,
-      requiredVersion: deps.react,
-    },
-    'react-dom': {
-      singleton: true,
-      requiredVersion: deps['react-dom'],
-    },
-  },
-};
+const { rules, shared, resolve, devServer } = require('webpack-config');
 
 module.exports = {
   entry: './src/index.ts',
@@ -32,13 +13,24 @@ module.exports = {
     rules,
   },
   plugins: [
-    new ModuleFederationPlugin(conf),
+    new ModuleFederationPlugin({
+      name: 'remote1',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './WithProvider': './src/exposes/WithProvider',
+      },
+      remotes: {
+        host: 'host@http://localhost:3000/mf-manifest.json',
+      },
+      shared,
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
     new HotModuleReplacementPlugin(),
   ],
   output: {
+    publicPath: 'http://localhost:3001/',
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },

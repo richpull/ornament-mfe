@@ -29,6 +29,6 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'react'],
   rules: {
-    '@typescript-eslint/no-var-requires': 'warn',
-  },
+    '@typescript-eslint/no-var-requires': 0,
+  }
 };

@@ -7,10 +7,11 @@ import {
   DialogFooter,
   DialogTitle,
 } from '@ornament-ui/kit/Dialog';
+import { useHook } from '../../../hooks/useHook';
 
 export const Dialog = () => {
   const [open, set] = useState(false);
-
+  const r = useHook();
   const toggle = () => set((p) => !p);
 
   return (
@@ -18,7 +19,7 @@ export const Dialog = () => {
       <Button onClick={toggle}>open dialog</Button>
       <DialogComponent onClose={toggle} open={open}>
         <DialogHeader>
-          <DialogTitle>Hello world!</DialogTitle>
+          <DialogTitle>Hello world! {r}</DialogTitle>
         </DialogHeader>
         <DialogBody>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet aperiam blanditiis dignissimos doloremque ea

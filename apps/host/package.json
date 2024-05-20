@@ -13,8 +13,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^4.5.2",
-    "webpack-config": "workspace:*",
-    "components": "workspace:*"
+    "components": "workspace:*",
+    "webpack-config": "workspace:*"
+  },
+  "dependencies": {
+    "webok-general": "^8.0.4",
+    "webok-toolkit": "^10.1.3"
   }
 }
