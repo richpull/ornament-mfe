@@ -4,16 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --mode development",
-    "build": "pnpm run clean && webpack --mode production",
-    "clean": "rimraf dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "kill-port 3000 && webpack serve --mode development --port 3000",
+    "build": "rimraf dist && webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "rimraf ../../deploy/host && copyfiles -f dist/* ../../deploy/host"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/dotenv-webpack": "^7.0.7",
+    "@types/node": "^20.12.12",
     "components": "workspace:*",
+    "dotenv-webpack": "^8.1.0",
     "webpack-config": "workspace:*"
   },
   "dependencies": {

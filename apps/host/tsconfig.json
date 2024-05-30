@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./src",
-    "include": ["src"],
+    "include": ["src", "env.d.ts"],
     "paths": {
       "*": ["../@mf-types/*"]
     }

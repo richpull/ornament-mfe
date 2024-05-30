@@ -1,6 +1,2 @@
-import { FC } from 'react';
-import { CheckerProps } from '../../../../packages/components/Checker/index';
-export declare const WithProvider: FC<{
-  CheckerProps?: CheckerProps;
-}>;
+export declare const WithProvider: () => import("react/jsx-runtime").JSX.Element;
 export default WithProvider;

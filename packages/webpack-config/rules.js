@@ -1,4 +1,4 @@
-module.exports = [
+module.exports = (dev) => [
   {
     test: /\.(js|jsx|tsx|ts)$/,
     exclude: /node_modules/,
@@ -23,7 +23,8 @@ module.exports = [
                 regenerator: true,
               },
             ],
-          ],
+            // dev && require.resolve('react-refresh/babel'),
+          ].filter(Boolean),
         },
       },
     ],

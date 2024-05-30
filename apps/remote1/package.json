@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --mode development",
-    "build": "webpack --mode production",
-    "clean": "rimraf dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "kill-port 3001 && webpack serve --mode development --port 3001",
+    "build": "rimraf dist && webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "rimraf ../../deploy/mfe/remote1 && copyfiles -f dist/* ../../deploy/mfe/remote1"
   },
   "keywords": [],
   "author": "",

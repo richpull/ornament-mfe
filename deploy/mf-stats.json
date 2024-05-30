@@ -1,0 +1,131 @@
+{
+  "id": "host",
+  "name": "host",
+  "metaData": {
+    "name": "host",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "1.0.0",
+      "buildName": "host"
+    },
+    "remoteEntry": {
+      "name": "host.55963ef9afb4c86885fc.bundle.js",
+      "path": "",
+      "type": "global"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "@mf-types.zip",
+      "api": "@mf-types.d.ts"
+    },
+    "globalName": "host",
+    "pluginVersion": "0.1.13",
+    "publicPath": "/"
+  },
+  "shared": [
+    {
+      "singleton": true,
+      "requiredVersion": "^1.0.0",
+      "shareScope": "default",
+      "name": "./src/exposes/context.ts",
+      "version": "false",
+      "eager": false,
+      "id": "host:./src/exposes/context.ts",
+      "assets": {
+        "js": {
+          "async": [
+            "855.e15f768ee55cd89153b5.js"
+          ],
+          "sync": [
+            "354.db4151c32a9752c8afc0.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "usedIn": []
+    },
+    {
+      "singleton": true,
+      "requiredVersion": "^18.2.0",
+      "shareScope": "default",
+      "name": "react-dom",
+      "version": "18.2.0",
+      "eager": false,
+      "id": "host:react-dom",
+      "assets": {
+        "js": {
+          "async": [
+            "855.e15f768ee55cd89153b5.js"
+          ],
+          "sync": [
+            "388.fd2a182a120087365272.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "usedIn": []
+    },
+    {
+      "singleton": true,
+      "requiredVersion": "^18.2.0",
+      "shareScope": "default",
+      "name": "react",
+      "version": "18.2.0",
+      "eager": false,
+      "id": "host:react",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "855.e15f768ee55cd89153b5.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "usedIn": [
+        "./context"
+      ]
+    }
+  ],
+  "remotes": [],
+  "exposes": [
+    {
+      "path": "./context",
+      "id": "host:context",
+      "name": "context",
+      "requires": [
+        "react"
+      ],
+      "file": "src/exposes/context.ts",
+      "assets": {
+        "js": {
+          "sync": [
+            "282.06df269658f68f8f0205.js",
+            "412.ec7d8c34214bf3aa1ce2.js"
+          ],
+          "async": [
+            "855.e15f768ee55cd89153b5.js",
+            "388.fd2a182a120087365272.js",
+            "282.06df269658f68f8f0205.js",
+            "412.ec7d8c34214bf3aa1ce2.js",
+            "354.db4151c32a9752c8afc0.js"
+          ]
+        },
+        "css": {
+          "sync": [],
+          "async": []
+        }
+      }
+    }
+  ]
+}
